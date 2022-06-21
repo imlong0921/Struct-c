@@ -1,52 +1,40 @@
-# Prerequisites
-*.d
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+struct candidate{
+	char code [5];
+	char name[30];
+	double math,physics,chemitry,markAvg;
+};
 
-# Linker output
-*.ilk
-*.map
-*.exp
+typedef struct candidate CDD;
 
-# Precompiled Headers
-*.gch
-*.pch
+float diemTB(CDD x){
+	return(x.math+x.physics+x.chemitry)/3;
+}
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+void input(CDD &x){
+	rewind(stdin);
+	printf("\nCode: ");
+	gets(x.code);
+	printf("\nFull Name: ");
+	gets(x.name);
+	printf("\nMath, Physics, Chemistry: ");
+	scanf("%lf %lf %lf", &x.math, &x.physics, &x.chemitry);
+}
+void output(CDD x){
+	printf("\nCode: %s",x.code);
+	printf("\nFull Name: %s",x.name);
+	printf("\nMath: %.2lf, Physics: %.2lf, Chemitry: %.2lf",x.math,x.physics,x.chemitry);
+	printf("\nMark Average: %.2lf", diemTB(x));
+}
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+int main(){
+	CDD st1;
+	printf("\nPlease fill the information: ");
+	input(st1);
+	printf("\n----- Information -----");
+	output(st1);
+}
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
